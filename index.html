@@ -20,9 +20,14 @@
   <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT">
   <meta http-equiv="pragma" content="no-cache">
 
-  <meta name="author" content="Daniel Smilkov, Nikhil Thorat, Charles Nicholson, Big Picture">
+
 
   <link rel="icon" type="image/png" href="../favicon.png">
+
+  <script
+			  src="https://code.jquery.com/jquery-3.5.1.min.js"
+			  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+			  crossorigin="anonymous"></script>
   
   <script>/**
  * @license
@@ -6174,7 +6179,7 @@ Polymer.PaperInkyFocusBehaviorImpl={observers:["_focusedChanged(receivedFocusFro
        */
       --light-theme-background-color: #ffffff;
       --light-theme-base-color: #000000;
-      --light-theme-text-color: var(--paper-grey-900);
+      --light-theme-text-color: #ffffff;
       --light-theme-secondary-color: #737373;  /* for secondary text and icons */
       --light-theme-disabled-color: #9b9b9b;  /* disabled/hint text */
       --light-theme-divider-color: #dbdbdb;
@@ -6503,7 +6508,7 @@ paper-icon-button[active] {
 }
 
 .ink-tab-group .projection-tab {
-  color: rgba(0, 0, 0, 0.5);
+  color: rgba(31, 245, 245, 0.5);
   cursor: pointer;
   font-weight: 300;
   line-height: 49px;
@@ -6518,7 +6523,7 @@ paper-icon-button[active] {
 
 .ink-tab-group .projection-tab.active {
   border-bottom: 2px solid black;
-  color: black;
+  color: white;
   font-weight: 500;
 }
 
@@ -8276,7 +8281,7 @@ Polymer({is:"paper-input-char-counter",behaviors:[Polymer.PaperInputAddonBehavio
         max-width: 100%;
         background: transparent;
         border: none;
-        color: var(--paper-input-container-input-color, var(--primary-text-color));
+        color: var(--paper-input-container-input-color, var(--secondary-text-color));
         -webkit-appearance: none;
         text-align: inherit;
         /* TODO(b/112921796): change this to bottom */
@@ -8652,7 +8657,7 @@ a.detail.keyboardEvent.preventDefault()},_onDownKey:function(a){this._focusNext(
         padding: 8px 0;
 
         background: var(--paper-listbox-background-color, var(--primary-background-color));
-        color: var(--paper-listbox-color, var(--primary-text-color));
+        color: var(--paper-listbox-color, var(--secondary-text-color));
 
         @apply --paper-listbox;
       }
@@ -10649,7 +10654,7 @@ a)},get _focusableElement(){return this.inputElement.textarea}});
 <style include="vz-projector-styles"></style>
 <style>
 #title {
-  background-color: #fafafa;
+  background-color: #16252f;
   color: black;
   font-weight: 500;
   left: 0;
@@ -10659,6 +10664,7 @@ a)},get _focusableElement(){return this.inputElement.textarea}});
   width: 276px;
 }
 #bookmark-container {
+  visibility: hidden;
   background-color: #fafafa;
 }
 #icon-container {
@@ -10671,7 +10677,7 @@ a)},get _focusableElement(){return this.inputElement.textarea}});
   position: relative;
 }
 #panel {
-  background-color: #fafafa;
+  background-color: #16252f;
   position: relative;
   overflow-y: scroll;
   top: 60px;
@@ -10726,7 +10732,7 @@ a)},get _focusableElement(){return this.inputElement.textarea}});
 }
 .ink-fab {
   border-radius: 50%;
-  background: white;
+  background: 16252f;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 paper-textarea {
@@ -10784,13 +10790,14 @@ paper-textarea {
           </div>
         </div>
       </template>
-
+      
       <div id="action-buttons-container">
         <paper-icon-button class="upload-download-icon-button" icon="save" title="Save bookmarks" disabled="[[!hasStates]]" on-tap="_downloadFile"></paper-icon-button>
         <paper-icon-button class="upload-download-icon-button" icon="file-upload" title="Load bookmarks" on-tap="_uploadFile"></paper-icon-button>
         <paper-icon-button class="add-icon-button ink-fab" icon="add" title="Add bookmark" on-tap="_addBookmark"></paper-icon-button>
         <input type="file" id="state-file" name="state-file">
       </div>
+    
     </div>
   </iron-collapse>
 </div>
@@ -11187,6 +11194,7 @@ input[type=file] {
 .dirs {
   color: rgba(0, 0, 0, 0.7);
   font-size: 12px;
+  visibility: hidden;
 }
 
 .dirs table tr {
@@ -11250,6 +11258,10 @@ paper-dropdown-menu paper-item {
   font-weight: 500;
   height: 59px;
   padding-left: 20px;
+}
+
+.title.style-scope.vz-projector-data-panel{
+  color: white;
 }
 
 #normalize-data-checkbox {
@@ -11388,6 +11400,7 @@ paper-dropdown-menu paper-item {
 }
 
 #demo-data-buttons-container {
+  visibility: hidden;
   display: none;
   margin-top: 10px;
 }
@@ -11449,7 +11462,7 @@ paper-dropdown-menu paper-item {
       </paper-dropdown-menu>
     </div>
     <div hidden$="[[!showForceCategoricalColorsCheckbox]]">
-      <paper-checkbox id="force-categorical-checkbox">Use categorical coloring</paper-checkbox>
+      <paper-checkbox id="force-categorical-checkbox" checked>Use categorical coloring</paper-checkbox>
       <paper-icon-button icon="help" class="help-icon"></paper-icon-button>
       <paper-tooltip position="bottom" animation-delay="0" fit-to-visible-bounds>
         For metadata fields that have many unique values we use a gradient color map
@@ -11684,7 +11697,7 @@ delete l.embeddings[0].metadataPath;e.setProjectorConfigTemplateJson(k,l)};var p
 <style include="vz-projector-styles"></style>
 <style>
 .info {
-  color: rgba(0, 0, 0, 0.5);
+  color: rgba(219, 200, 200, 0.5);
   display: block;
   font-size: 11px;
 }
@@ -12279,6 +12292,7 @@ a.preventDefault())},_changeValue:function(a){this.value=a.target.value;this.fir
 .nn, .metadata-info {
   display: flex;
   flex-direction: column;
+  color: gray;
 }
 
 .nn > *, .metadata-info > * {
@@ -12399,6 +12413,7 @@ a.preventDefault())},_changeValue:function(a){this.value=a.target.value;this.fir
 }
 
 .matches-list .row {
+  color: gray;
   border-bottom: 1px solid #ddd;
   cursor: pointer;
   display: flex;
@@ -12691,7 +12706,7 @@ zc=this&&this.__extends||function(){var a=Object.setPrototypeOf||{__proto__:[]}i
 }
 
 .notice {
-  color: #880E4F;
+  color: gray;
 }
 
 .container {
@@ -12724,7 +12739,7 @@ zc=this&&this.__extends||function(){var a=Object.setPrototypeOf||{__proto__:[]}i
 }
 
 #total-variance {
-  color: rgba(0, 0, 0, 0.7);
+  color: white;
 }
 </style>
 <div id="main">
@@ -12999,6 +13014,10 @@ a.ProjectionsPanel=b;document.registerElement(b.prototype.is,b)})(wc||(wc={}));
   flex-grow: 2;
 }
 
+#projections-panel{
+  //visibility: hidden;
+}
+
 #main .stage {
   position: relative;
   flex-grow: 2;
@@ -13026,12 +13045,12 @@ a.ProjectionsPanel=b;document.registerElement(b.prototype.is,b)})(wc||(wc={}));
   min-width: 312px;
   width: 312px;
   border-right: 1px solid rgba(0, 0, 0, 0.1);
-  background: #fafafa;
+  background: #16252f;
 }
 
 #right-pane {
   border-left: 1px solid rgba(0, 0, 0, 0.1);
-  background: #fafafa;
+  background: #16252f;
   display: flex;
   height: 100%;
   min-width: 300px;
@@ -13129,9 +13148,14 @@ a.ProjectionsPanel=b;document.registerElement(b.prototype.is,b)})(wc||(wc={}));
   padding-left: 5px;
 }
 
+.status-bar-entry.style-scope.vz-projector{
+  color: white;
+}
+
 /* - Menubar */
 
 .ink-panel-menubar {
+  background: #16252f;
   align-items: center;
   position: relative;
   height: 60px;
@@ -13153,6 +13177,7 @@ a.ProjectionsPanel=b;document.registerElement(b.prototype.is,b)})(wc||(wc={}));
   width: 300px;
 }
 #bookmark-panel-container {
+  
   bottom: 60px;
   position: absolute;
 }
@@ -13302,6 +13327,8 @@ m=0;m<l.length;++m)k[l[m]]=h.projections[l[m]];e.projections.push(k)}e.selectedP
 this.projectionsPanel.populateBookmarkFromUI(e);return e};d.prototype.loadState=function(e){this.setProjection(null);this.projectionsPanel.disablePolymerChangesTriggerReprojection();null!=this.dataSetBeforeFilter&&this.resetFilterDataset();null!=e.filteredPoints&&this.filterDataset(e.filteredPoints);this.projectionsPanel.enablePolymerChangesTriggerReprojection();for(var g=0;g<e.projections.length;g++)for(var h=this.dataSet.points[g],k=e.projections[g],l=Object.keys(k),m=0;m<l.length;++m)h.projections[l[m]]=
 k[l[m]];this.dataSet.hasTSNERun="tsne"===e.selectedProjection;this.dataSet.tSNEIteration=e.tSNEIteration;this.projectionsPanel.restoreUIFromBookmark(e);this.inspectorPanel.restoreUIFromBookmark(e);this.dataPanel.selectedColorOptionName=e.selectedColorOptionName;this.dataPanel.setForceCategoricalColoring(!!e.forceCategoricalColoring);this.selectedLabelOption=e.selectedLabelOption;this.projectorScatterPlotAdapter.restoreUIFromBookmark(e);g=a.stateGetAccessorDimensions(e);h=a.getProjectionComponents(e.selectedProjection,
 g);k=new a.Projection(e.selectedProjection,h,g.length,this.dataSet);this.setProjection(k);this.notifySelectionChanged(e.selectedPoints)};return d}(a.ProjectorPolymer);a.Projector=b;document.registerElement(b.prototype.is,b)})(wc||(wc={}));
+
+
 </script>
 </dom-module>
 
@@ -13317,7 +13344,8 @@ g);k=new a.Projection(e.selectedProjection,h,g.length,this.dataSet);this.setProj
   padding: 0 24px;
   height: 60px;
   color: white;
-  background: #560731;
+  background: #16252f;
+  border-bottom: 1px solid #ffffff;
 }
 
 #appbar .logo {
@@ -13340,11 +13368,18 @@ vz-projector {
 #container {
   height: 100%;
 }
+
+#logo-img{
+  height:60px;
+}
 </style>
 
 <div id="container">
   <div id="appbar">
-    <div>Embedding Projector</div>
+    <div>
+      <img id="logo-img" src='ALPHA10X_logo.png'></img>
+    </div>
+    <!--
     <div class="icons">
       <a title="Documentation" target="_blank" href="[[documentationLink]]">
         <paper-icon-button icon="help-outline"></paper-icon-button>
@@ -13359,6 +13394,7 @@ vz-projector {
         </paper-tooltip>
       </a>
     </div>
+    -->
   </div>
   <vz-projector route-prefix="[[routePrefix]]" serving-mode="[[servingMode]]" projector-config-json-path="[[projectorConfigJsonPath]]" page-view-logging="[[pageViewLogging]]" event-logging="[[eventLogging]]">
   </vz-projector>
@@ -13367,14 +13403,17 @@ vz-projector {
 
 
 <script>//~~WEBPATH~~/vz-projector/vz-projector-app.html.js
-Polymer({is:"vz-projector-app",properties:{pageViewLogging:{type:Boolean,value:!1},eventLogging:{type:Boolean,value:!1}}});</script>
+Polymer({is:"vz-projector-app",properties:{pageViewLogging:{type:Boolean,value:!1},eventLogging:{type:Boolean,value:!1}}});
+</script>
+
+
 </dom-module>
 
   
   
   
 
-  <title>Embedding projector - visualization of high-dimensional data</title>
+  <title>ALPHA10X Projector</title>
   <style include="vz-projector-styles"></style>
   <style>
     html {
@@ -13391,7 +13430,17 @@ Polymer({is:"vz-projector-app",properties:{pageViewLogging:{type:Boolean,value:!
   </style>
 
 <body>
+  
   <vz-projector-app documentation-link="https://www.tensorflow.org/get_started/embedding_viz" bug-report-link="https://github.com/tensorflow/tensorflow/issues" serving-mode="demo" projector-config-json-path="oss_data/oss_demo_projector_config.json" page-view-logging>
+    
   </vz-projector-app>
+
+  <script>
+  $(document).ready(function() {
+   $("#nightDayMode").trigger('click');
+});
+</script>
+
+  
 
 
