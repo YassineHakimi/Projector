@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/2bbbaa14-0baa-45cf-978a-6ad6bf1b7c84/resourceGroups/yassinehakimi_rg_Windows_westeurope/providers/Microsoft.Web/sites/projector-alpha-v2",
+    "appService.deploySubpath": "."
+}

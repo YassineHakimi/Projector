@@ -3,9 +3,9 @@
     
     {
       "tensorName": "Full_Companies",
-      "tensorShape": [7705, 286],
-      "tensorPath": "oss_data/all_categories_10k.tsv",
-      "metadataPath": "oss_data/metadata.tsv"
+      "tensorShape": [16526, 3],
+      "tensorPath": "oss_data/full_data.tsv",
+      "metadataPath": "oss_data/labels.tsv"
     }
   ],
   "modelCheckpointPath": "Demo datasets"
