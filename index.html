@@ -11462,7 +11462,7 @@ paper-dropdown-menu paper-item {
       </paper-dropdown-menu>
     </div>
     <div hidden$="[[!showForceCategoricalColorsCheckbox]]">
-      <paper-checkbox id="force-categorical-checkbox" checked>Use categorical coloring</paper-checkbox>
+      <paper-checkbox id="force-categorical-checkbox">Use categorical coloring</paper-checkbox>
       <paper-icon-button icon="help" class="help-icon"></paper-icon-button>
       <paper-tooltip position="bottom" animation-delay="0" fit-to-visible-bounds>
         For metadata fields that have many unique values we use a gradient color map
@@ -13362,7 +13362,7 @@ g);k=new a.Projection(e.selectedProjection,h,g.length,this.dataSet);this.setProj
 }
 
 vz-projector {
-  height: calc(100% - 60px);
+  height: 100%;
 }
 
 #container {
@@ -13375,27 +13375,7 @@ vz-projector {
 </style>
 
 <div id="container">
-  <div id="appbar">
-    <div>
-      <img id="logo-img" src='ALPHA10X_logo.png'></img>
-    </div>
-    <!--
-    <div class="icons">
-      <a title="Documentation" target="_blank" href="[[documentationLink]]">
-        <paper-icon-button icon="help-outline"></paper-icon-button>
-        <paper-tooltip position="bottom" animation-delay="0" fit-to-visible-bounds>
-          Open documentation
-        </paper-tooltip>
-      </a>
-      <a title="Report bug" target="_blank" href="[[bugReportLink]]">
-        <paper-icon-button icon="bug-report"></paper-icon-button>
-        <paper-tooltip position="bottom" animation-delay="0" fit-to-visible-bounds>
-          Report a bug
-        </paper-tooltip>
-      </a>
-    </div>
-    -->
-  </div>
+ 
   <vz-projector route-prefix="[[routePrefix]]" serving-mode="[[servingMode]]" projector-config-json-path="[[projectorConfigJsonPath]]" page-view-logging="[[pageViewLogging]]" event-logging="[[eventLogging]]">
   </vz-projector>
 </div>
